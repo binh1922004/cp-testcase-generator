@@ -1,16 +1,26 @@
 # 🚀 CP Testcase Generator
 
-Pipeline tự động sử dụng AI để sinh test generator cho các bài toán Competitive Programming.
+Hệ thống pipeline tự động sinh **testcase generator** cho các bài toán Competitive Programming, sử dụng AI để phân tích đề bài và tạo mã C++ sinh test.
 
-## 📋 Tính năng
+---
 
-- ✅ Tự động phân tích đề bài (statement) và solution
-- ✅ Sinh test generator code (C++) tự động
-- ✅ Hỗ trợ nhiều loại test: small, random, edge cases, stress tests
-- ✅ GitHub Actions workflow tự động
-- ✅ Format output: folders chứa inp/out files
+## ✨ Tính năng nổi bật
+
+- 🔍 **Phân tích tự động** đề bài (statement) và solution mẫu  
+- 🧠 **Sinh mã C++ generator** hoàn toàn tự động  
+- 📦 Hỗ trợ nhiều loại test:
+  - Small tests  
+  - Random tests  
+  - Edge cases  
+  - Stress tests  
+- ⚙️ **Tích hợp GitHub Actions** để chạy pipeline tự động  
+- 📁 Xuất testcase dưới dạng thư mục `input/output` hoặc file `.zip`  
+
+---
 
 ## 🏗️ Cấu trúc thư mục
+
+
 
 ```
 cp-testcase-generator/
@@ -32,10 +42,17 @@ cp-testcase-generator/
 
 ## 🚀 Cách sử dụng
 
-Bước 1: Hoàn thành các folder structure và rename theo tên file trong testcase.cpp
-Bước 2: Đưa dữ liệu vào .env
-Bước 3: pip install -r requirements.txt
-Bước 4: python src/testcase_gen.py
+**Bước 1: Hoàn thành các folder structure và rename theo tên file trong testcase.cpp**
+
+**Bước 2: Đưa dữ liệu vào .env**
+
+
+**Bước 3. Cài đặt thư viện**
+```bash
+pip install -r requirements.txt
+```
+
+**Bước 4: python src/testcase_gen.py**
 
 ## 📚 Ví dụ
 
