@@ -14,127 +14,28 @@ Pipeline tự động sử dụng AI để sinh test generator cho các bài to�
 
 ```
 cp-testcase-generator/
-├── problems/              # Đặt bài toán vào đây
-│   ├── example_problem/
-│   │   ├── statement.md   # Đề bài
-│   │   ├── solution.cpp   # Lời giải
-│   │   └── config.json    # Cấu hình (optional)
-│   └── ...
-├── generators/            # Test generators được sinh ra
-│   └── example_problem_gen.cpp
-├── testcases/            # Testcases được sinh ra
-│   └── example_problem/
-│       ├── test_001/
-│       │   ├── inp
-│       │   └── out
-│       └── test_002/
-│           ├── inp
-│           └── out
-├── scripts/
-│   ├── generate_testgen.py    # Script sinh generator
-│   └── run_generator.py       # Script chạy generator
-├── templates/
-│   └── generator_template.cpp # Template mẫu
-└── .github/
-    └── workflows/
-        └── auto-generate.yml  # GitHub Actions
+├── data/
+│   └── sample_generator_code.txt
+│   └── libary_code.txt (optional)
+│   └── problem_data.jsonl:
+│       └── field: statement, input, output, code
+├── generators/            # Test generators will be created
+│   └── problem_id
+│       └── generator_code.cpp
+│       └── testcases
+│       └── testcase.zip
+├── migrate/            # Migrate some data from database
+├── src/
+│   └── testcase_gen.py # Main file prompt AI to generate code 
+│   └── run.cpp # Run code to generate testcase
 ```
 
 ## 🚀 Cách sử dụng
 
-### Option 1: Tự động với GitHub Actions
-
-1. Tạo folder mới trong `problems/`:
-```bash
-mkdir -p problems/your_problem
-```
-
-2. Thêm các files:
-- `statement.md`: Đề bài
-- `solution.cpp`: Lời giải của bạn
-- `config.json` (optional): Cấu hình
-
-3. Push lên GitHub:
-```bash
-git add problems/your_problem
-git commit -m "Add new problem: your_problem"
-git push
-```
-
-4. GitHub Actions sẽ tự động:
-- Phân tích đề bài và solution
-- Sinh test generator
-- Tạo Pull Request để review
-
-### Option 2: Chạy local
-
-```bash
-# Cài đặt dependencies
-pip install -r requirements.txt
-
-# Sinh test generator
-python scripts/generate_testgen.py -p problems/your_problem
-
-# Compile và chạy generator
-python scripts/run_generator.py -p your_problem -n 10
-```
-
-## 📝 Format files
-
-### statement.md
-```markdown
-# Tên bài toán
-
-## Đề bài
-Mô tả bài toán...
-
-## Input
-Format input...
-
-## Output
-Format output...
-
-## Constraints
-- 1 ≤ n ≤ 10^5
-- 1 ≤ a[i] ≤ 10^9
-
-## Example
-Input:
-```
-3
-1 2 3
-```
-
-Output:
-```
-6
-```
-```
-
-### config.json (optional)
-```json
-{
-  "num_tests": 20,
-  "test_types": {
-    "small": 5,
-    "random": 10,
-    "edge": 3,
-    "stress": 2
-  },
-  "constraints": {
-    "n_max": 100000,
-    "value_max": 1000000000
-  }
-}
-```
-
-## 🔧 Setup GitHub Actions
-
-Repository đã được cấu hình sẵn GitHub Actions. Bạn cần:
-
-1. Vào **Settings** → **Actions** → **General**
-2. Cho phép **Read and write permissions**
-3. Đảm bảo **Allow GitHub Actions to create and approve pull requests** được bật
+Bước 1: Hoàn thành các folder structure và rename theo tên file trong testcase.cpp
+Bước 2: Đưa dữ liệu vào .env
+Bước 3: pip install -r requirements.txt
+Bước 4: python src/testcase_gen.py
 
 ## 📚 Ví dụ
 

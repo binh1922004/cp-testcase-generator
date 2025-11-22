@@ -1,0 +1,29 @@
+# Data
+.env
+data/
+generators/
+# Compiled files
+*.o
+*.out
+*.exe
+*_sol
+*_gen
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary
+changed_problems.txt
